@@ -295,12 +295,12 @@ Now create one message intended for Bob:
 Track the log specifically for Bob:
 ````bash
   $ cd eve-store
-  $ git update-ref refs/heads/$EVE-for-Bob refs/heads/$EVE
+  $ git update-ref refs/heads/Eve-for-Bob refs/heads/$EVE
 ````
 
 Rewind Eve's log to the parent commit:
 ````bash
-  $ git update-ref refs/heads/$EVE $(git show refs/heads/$EVE --format=%p)
+  $ git update-ref refs/heads/$EVE $(git rev-parse refs/heads/$EVE~1)
 ````
 
 Append a new message intended for Alice:
@@ -312,21 +312,21 @@ Append a new message intended for Alice:
 Track the additional log specifically for Alice:
 ````bash
   $ cd eve-store
-  $ git update-ref refs/heads/$EVE-for-Alice refs/heads/$EVE
+  $ git update-ref refs/heads/Eve-for-Alice refs/heads/$EVE
 ````
 
 Now Eve can push different logs to Bob and Alice:
 ````bash
-  $ git push ../bob-store refs/heads/$EVE-for-Bob":"refs/heads/$EVE
-  $ git push ../alice-store refs/heads/$EVE-for-Alice":"refs/heads/$EVE
+  $ git push ../bob-store refs/heads/Eve-for-Bob":"refs/heads/$EVE
+  $ git push ../alice-store refs/heads/Eve-for-Alice":"refs/heads/$EVE
 ````
 
 From within Bob's store or Alice's store, the log satisfies the single-write and no-fork properties:
 ````bash
   $ cd ../bob-store
-  $ git log $EVE --topo-order --show-signature
+  $ git log refs/heads/$EVE --topo-order --show-signature
   $ cd ../alice-store
-  $ git log $EVE --topo-order --show-signature
+  $ git log refs/heads/$EVE --topo-order --show-signature
 ````
 
 If Eve had written that she was giving the same tokens to both Bob and Alice, both would now think they 
@@ -345,7 +345,21 @@ they have first updated from:
 
 # 3. Tolerating Forks
 
-TBD
+At the very minimum we would like to be able to at least replicate all branches of forks. These can be stored, for example, 
+under where we got them from:
+
+````bash
+  $ # From alice-store:
+  $ git update-ref refs/remotes/eve-store/$EVE refs/heads/$EVE # Remember we got these updates from Eve
+  $ git fetch ../bob-store refs/heads/$EVE":"refs/remotes/bob-store/$EVE
+````
+
+Now we can actually see the fork in the form of git branches:
+````bash
+  $ git log refs/remotes/eve-store/$EVE refs/remotes/bob-store/$EVE --graph
+````
+
+TBC
 
 # References
 
