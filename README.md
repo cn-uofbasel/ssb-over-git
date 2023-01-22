@@ -354,7 +354,7 @@ under where we got them from:
   $ git fetch ../bob-store refs/heads/$EVE":"refs/remotes/bob-store/$EVE
 ````
 
-Now we can actually see the fork in the form of git branches:
+Now we actually replicated locally all branches of the fork, can see them, and potentially react to them:
 ````bash
   $ git log refs/remotes/eve-store/$EVE refs/remotes/bob-store/$EVE --graph
 ````
