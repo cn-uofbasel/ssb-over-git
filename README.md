@@ -352,12 +352,12 @@ TBD
 4. Show disk usage for branches (Git >=2.31): https://github.com/git/git/commit/16950f8384afa5106b1ce57da07a964c2aaef3f7
 5. Latency numbers every programmer should know: https://gist.github.com/jboner/2841832
 6. Determining Updates to Transmit through a Connected Channel: 
-  1. Packfile Negotiation: https://git-scm.com/docs/pack-protocol/2.2.3#_packfile_negotiation
-  2. Git Protocol v2: https://opensource.googleblog.com/2018/05/introducing-git-protocol-version-2.html
-  3. Background Maintenance: https://git-scm.com/docs/git-maintenance
+    1. Packfile Negotiation: https://git-scm.com/docs/pack-protocol/2.2.3#_packfile_negotiation
+    2. Git Protocol v2: https://opensource.googleblog.com/2018/05/introducing-git-protocol-version-2.html
+    3. Background Maintenance: https://git-scm.com/docs/git-maintenance
 7. Git Internals: [Packed Object Store](https://github.blog/2022-08-29-gits-database-internals-i-packed-object-store/) [Commit History Queries](https://github.blog/2022-08-30-gits-database-internals-ii-commit-history-queries/) [File History Queries](https://github.blog/2022-08-31-gits-database-internals-iii-file-history-queries/) [Distributed Synchronization](https://github.blog/2022-09-01-gits-database-internals-iv-distributed-synchronization/) [Scalability](https://github.blog/2022-09-02-gits-database-internals-v-scalability/)
-  1. Internal use of Vector Clocks (Corrected Commit Date): https://github.blog/2022-08-30-gits-database-internals-ii-commit-history-queries/#generation-number-v2-corrected-commit-dates
-  2. Bloom Filters for File Path Changes: https://github.blog/2022-08-31-gits-database-internals-iii-file-history-queries/#changed-path-bloom-filters
+    1. Internal use of Vector Clocks (Corrected Commit Date): https://github.blog/2022-08-30-gits-database-internals-ii-commit-history-queries/#generation-number-v2-corrected-commit-dates
+    2. Bloom Filters for File Path Changes: https://github.blog/2022-08-31-gits-database-internals-iii-file-history-queries/#changed-path-bloom-filters
   
 
 
