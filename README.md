@@ -238,7 +238,7 @@ updates:
 
 ````bash
   $ cd ../bob-store
-  $ git bundle create bob.updates refs/heads/$BOB_FRONTIER_AT_ALICE":"refs/heads/$BOB
+  $ git bundle create bob.updates refs/heads/$BOB_FRONTIER_AT_ALICE".."refs/heads/$BOB
 ````
 
 ## Deletion
