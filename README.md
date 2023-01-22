@@ -49,7 +49,7 @@ We first replicate the basic functionalities of SSB:
 
 ## Identity
 
-Create an ed25519 identity with GPG ([source](https://mdleom.com/blog/2020/07/18/git-sign-commit-ed25519/)):
+Create an ed25519 identity with GPG:
 
 ````bash
    $ gpg --full-generate-key
@@ -90,19 +90,20 @@ is a regular repository. Create one for Bob:
 ## Signed Message
 
 A SSB message is similar to a signed Git commit in that it has the following properties:
-1. previous: reference to a previous message (respectively commit)
-2. author:  public key of the author (respectively author name, email, public key)
-3. sequence: sequence number of the message (respectively no sequence number because Git supports more than logs)
-4. timestamp: date-time at which the author claims to have created the message (idem)
-5. content: string with maximum size of 8,192 Bytes (respectively commit
+1. `previous`: reference to a previous message (respectively commit)
+2. `author`:  public key of the author (respectively author name, email, public key)
+3. `sequence`: sequence number of the message (respectively no sequence number because Git supports more than logs)
+4. `timestamp`: date-time at which the author claims to have created the message (idem)
+5. `content`: string with maximum size of 8,192 Bytes (respectively commit
    message with upper bound 
    [implementation-specific](https://stackoverflow.com/questions/9733757/maximum-commit-message-size))
-5. signature: ed25519 signature of 1-5 (respectively 1-2 + 4-5) 
+5. `signature`: ed25519 signature of 1-5 (respectively 1-2 + 4-5) 
 
 Similar to a Git commit, a SSB message is identitied by the SHA hash of its
-content, but uses SHA-256 instead of SHA-1. Git is reportedly moving to use
-SHA-256 as well: the actual algorithm is not critical so we simply just use
-the default of Git. 
+content, but uses SHA-256 instead of SHA-1. Git is [transitioning to use
+SHA-256 as well](https://git-scm.com/docs/hash-function-transition/).
+For presentation simplicity, in this document we simply just use
+the default SHA-1 of Git. 
 
 ### Ignoring trees
 
@@ -345,7 +346,18 @@ TBD
 
 # References
 
-Alternatives:
-1. Signing Git Commits with a SSH Key: https://calebhearth.com/sign-git-with-ssh
+1. Signing Git Commits with a SSH Key: https://calebhearth.com/sign-git-with-ssh, https://git-scm.com/docs/git-config#Documentation/git-config.txt-gpgprogram
+2. Signing Git Commits with GPG: https://mdleom.com/blog/2020/07/18/git-sign-commit-ed25519/
+3. Git transition plan to SHA256: https://git-scm.com/docs/hash-function-transition/
+4. Show disk usage for branches (Git >=2.31): https://github.com/git/git/commit/16950f8384afa5106b1ce57da07a964c2aaef3f7
+5. Latency numbers every programmer should know: https://gist.github.com/jboner/2841832
+6. Determining Updates to Transmit through a Connected Channel: 
+  1. Packfile Negotiation: https://git-scm.com/docs/pack-protocol/2.2.3#_packfile_negotiation
+  2. Git Protocol v2: https://opensource.googleblog.com/2018/05/introducing-git-protocol-version-2.html
+  3. Background Maintenance: https://git-scm.com/docs/git-maintenance
+7. Git Internals: [Packed Object Store](https://github.blog/2022-08-29-gits-database-internals-i-packed-object-store/) [Commit History Queries](https://github.blog/2022-08-30-gits-database-internals-ii-commit-history-queries/) [File History Queries](https://github.blog/2022-08-31-gits-database-internals-iii-file-history-queries/) [Distributed Synchronization](https://github.blog/2022-09-01-gits-database-internals-iv-distributed-synchronization/) [Scalability](https://github.blog/2022-09-02-gits-database-internals-v-scalability/)
+  1. Internal use of Vector Clocks (Corrected Commit Date): https://github.blog/2022-08-30-gits-database-internals-ii-commit-history-queries/#generation-number-v2-corrected-commit-dates
+  2. Bloom Filters for File Path Changes: https://github.blog/2022-08-31-gits-database-internals-iii-file-history-queries/#changed-path-bloom-filters
+  
 
 
