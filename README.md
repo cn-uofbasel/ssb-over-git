@@ -247,10 +247,11 @@ The messages of a log can be easily deleted from a store simply by removing all 
 the store:
 
 ````bash
-  $ cd ../bob-store
-  $ git update-ref -d refs/heads/bob-frontier # Remove symbolic link
-  $ git update-ref -d refs/heads/$BOB         # Remove reference to BOB log
+  $ cd ../alice-store
+  $ git checkout --orphan temp                # move to a temporary branch with no commits
+  $ git branch -D $BOB                        # delete ref refs/heads/$BOB and logs/refs/heads/$BOB
   $ git gc --prune=now                        # Remove now unreachable objects (garbage collect)
+  $ git show
 ````
 
 Depending on the prior history of operations on the Git repository, there might still be references in git internals
