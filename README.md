@@ -248,10 +248,12 @@ the store:
 
 ````bash
   $ cd ../alice-store
-  $ git checkout --orphan temp                # move to a temporary branch with no commits
-  $ git branch -D $BOB                        # delete ref refs/heads/$BOB and logs/refs/heads/$BOB
-  $ git gc --prune=now                        # Remove now unreachable objects (garbage collect)
-  $ git show
+  $ LAST=$(git show refs/heads/$BOB --format=%H) # store last commit hash
+  $ git show $LAST
+  $ git checkout --orphan temp                   # move to a temporary branch with no commits
+  $ git branch -D $BOB                           # delete ref refs/heads/$BOB and logs/refs/heads/$BOB
+  $ git gc --prune=now                           # Remove now unreachable objects (garbage collect)
+  $ git show $LAST                               # Should return: "fatal: bad object ..."
 ````
 
 Depending on the prior history of operations on the Git repository, there might still be references in git internals
