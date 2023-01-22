@@ -250,7 +250,7 @@ the store:
   $ cd ../bob-store
   $ git update-ref -d refs/heads/bob-frontier # Remove symbolic link
   $ git update-ref -d refs/heads/$BOB         # Remove reference to BOB log
-  $ git gc                                    # Remove now unreachable objects (garbage collect)
+  $ git gc --prune=now                        # Remove now unreachable objects (garbage collect)
 ````
 
 Depending on the prior history of operations on the Git repository, there might still be references in git internals
