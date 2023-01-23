@@ -345,6 +345,8 @@ they have first updated from:
 
 # 3. Tolerating Forks
 
+## Replicating Forks
+
 At the very minimum we would like to be able to at least replicate all branches of forks. These can be stored, for example, 
 under where we got them from:
 
@@ -354,12 +356,18 @@ under where we got them from:
   $ git fetch ../bob-store refs/heads/$EVE":"refs/remotes/bob-store/$EVE
 ````
 
-Now we actually replicated locally all branches of the fork, can see them, and potentially react to them:
+## Detecting Forks
+
+We can test whether multiple log replicas are actually branches by counting how many of the branches' tips cannot be reached from another. If 
+the number is greater than 1 then there are as many branches:
 ````bash
-  $ git log refs/remotes/eve-store/$EVE refs/remotes/bob-store/$EVE --graph
+  $ git merge-base --independent $(git for-each-ref "refs/remotes/*/$EVE" --format="%(refname)") | wc -l
 ````
 
-TBC
+There is also a nice visualization option for branches:
+````bash
+  $ git log refs/remotes/eve-store/$EVE refs/remotes/bob-store/$EVE --graph --format=oneline
+````
 
 # References
 
