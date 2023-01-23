@@ -35,7 +35,7 @@ are covered in the so-called "plumbing"
 We present our approach in 3 parts:
 1. [Vanilla SSB](#1-vanilla-ssb): Replication of SSB's behaviour in Git
 2. [Forking Problem](#2-the-problem-of-forks): We show how forks break eventual consistency
-3. [Tolerating Forks](#3-tolerating-forks): TBD
+3. [Tolerating Forks](#3-tolerating-forks): We show how to replicate then detect forks
 
 # 1. Vanilla SSB  
 
