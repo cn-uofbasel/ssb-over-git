@@ -271,7 +271,7 @@ Replication of updates, by push or pull, can happen between any pair of replicas
                 
 This will guarantee eventual consistency between all replicas. In effect, the absence of forks enables the fast-forwarding replication mode of Git for all updates.
 
-However, in the presence of incorrect or malicious participants, we cannot assume that they will maintain those properties as they might deviate arbitrarily from the expected protocol. For example, let's Eve might maintain one different log for each participant she is interacting with so that each of them thinks they are interacting with a valid log. 
+However, in the presence of incorrect or malicious participants, we cannot assume that they will maintain those properties as they might deviate arbitrarily from the expected protocol. For example, Eve might maintain one different log for each participant she is interacting with so that each of them thinks they are interacting with a valid log. 
 
 Let's see how this may play out with Git. For convenience, rather than retyping the full commands shown previously, we will use the following equivalent [helper scripts](./bin):
 1. ```bin/vanilla/create-store.sh PATH```: create a store at `PATH`
