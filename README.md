@@ -352,7 +352,7 @@ under where we got them from:
 
 ````bash
   $ # From alice-store:
-  $ git update-ref refs/remotes/eve-store/$EVE refs/heads/$EVE # Remember we got these updates from Eve
+  $ git update-ref refs/remotes/eve-store/$EVE refs/heads/$EVE # Remember we got these updates from Eve's store
   $ git fetch ../bob-store refs/heads/$EVE":"refs/remotes/bob-store/$EVE
 ````
 
