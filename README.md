@@ -164,7 +164,7 @@ We can also verify that Bob's log is consistent with their public key:
 We can now append a second message to Bob's log:
 
 ````bash
-  $ SECONDCOMMIT=$(echo 'Second message' | GIT_COMMITTER_NAME=$BOB GIT_AUTHOR_NAME=$BOB git commit-tree --gpg-sign=$BOB -p bob-frontier)
+  $ SECONDCOMMIT=$(echo 'Second message' | GIT_COMMITTER_NAME=$BOB GIT_AUTHOR_NAME=$BOB git commit-tree 4b825dc --gpg-sign=$BOB -p bob-frontier)
   $ git update-ref refs/heads/$BOB $SECONDCOMMIT
 ````
 
